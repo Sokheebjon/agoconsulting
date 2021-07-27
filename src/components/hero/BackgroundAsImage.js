@@ -5,6 +5,15 @@ import {css} from "styled-components/macro"; //eslint-disable-line
 
 import Header, {NavLink, NavLinks, PrimaryLink, LogoLink, NavToggle, DesktopNavLinks} from "../headers/light.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
+import * as Scroll from 'react-scroll';
+import {Link, Element, Events, animateScroll as scroll, scrollSpy, scroller} from 'react-scroll'
+import {PrimaryButton as PrimaryButtonBase} from "../misc/Buttons";
+
+// let Link = Scroll.Link;
+// let Element = Scroll.Element;
+// let Events = Scroll.Events;
+// let scroll = Scroll.animateScroll;
+// let scrollSpy = Scroll.scrollSpy;
 
 const StyledHeader = styled(Header)`
   ${tw`pt-8 max-w-none`}
@@ -57,27 +66,56 @@ const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
   }
 `;
 
+// let prevScrollpos = window.pageYOffset;
+// window.onscroll = function () {
+//     let currentScrollPos = window.pageYOffset;
+//     if (prevScrollpos > currentScrollPos) {
+//         document.getElementById("navbar")?.style.top = "0";
+//     } else {
+//         document.getElementById("navbar")?.style.top = "-100px";
+//     }
+//     prevScrollpos = currentScrollPos;
+// }
+const PrimaryButton = tw(PrimaryButtonBase)`text-sm inline-block mx-auto md:mx-0`;
+
+
 export default () => {
     const navLinks = [
-        <NavLinks key={1}>
-            <NavLink href="#">
-                Biz haqimizda
-            </NavLink>
-            <NavLink href="#">
-                Universtitetlar
-            </NavLink>
-            <NavLink href="#">
-                Xodimlar
-            </NavLink>
-            <NavLink href="#">
-                Filiallar
-            </NavLink>
+        <NavLinks>
+            <Link style={{marginRight: 15, marginBottom: 10, color: "white", cursor: "pointer", fontWeight: "bold"}} activeClass="active"
+                  to="aboutUs"
+                  spy={true} smooth={true} offset={50} duration={500}>
+                <NavLink>
+                    Biz haqimizda
+                </NavLink>
+            </Link>
+            <Link style={{marginRight: 15, marginBottom: 10, color: "white", cursor: "pointer", fontWeight: "bold"}} activeClass="active"
+                  to="univer"
+                  spy={true} offset={50} duration={500}>
+                <NavLink>
+                    Universtitetlar
+                </NavLink>
+            </Link>
+            <Link style={{marginRight: 15, marginBottom: 10, color: "white", cursor: "pointer", fontWeight: "bold"}} className="test6"
+                  to="team" spy={true}
+                  duration={500}>
+                <NavLink>
+                    Xodimlar
+                </NavLink>
+            </Link>
+            <Link style={{marginRight: 15, marginBottom: 10, color: "white", cursor: "pointer", fontWeight: "bold"}}>
+                <NavLink>
+                    Filiallar
+                </NavLink>
+            </Link>
         </NavLinks>,
-        <NavLinks key={2}>
-            <PrimaryLink href="/#">
+        <PrimaryButton>
+            <Link style={{marginRight: 15, color: "white", cursor: "pointer", fontWeight: "bold"}} className="test6"
+                  to="call" spy={true}
+                  duration={500}>
                 Murojat qilish
-            </PrimaryLink>
-        </NavLinks>
+            </Link>
+        </PrimaryButton>
     ];
 
     return (
@@ -91,9 +129,17 @@ export default () => {
                         <Heading>
                             <span style={{width: 1000, fontSize: 30}}>Biz bilan oson talaba bo'ling!</span>
                             <br/>
-                            <SlantedBackground>Ago Consulting</SlantedBackground>
+                            <SlantedBackground>AGO CONSULT</SlantedBackground>
                         </Heading>
-                        <PrimaryAction>Ko'proq bilish</PrimaryAction>
+
+                        <Link style={{marginRight: 15, cursor: "pointer", fontWeight: "bold"}}
+                              activeClass="active" to="aboutUs"
+                              spy={true} offset={50} duration={500}>
+                            <PrimaryAction>
+                                Ko'proq bilish
+                            </PrimaryAction>
+                        </Link>
+
                     </LeftColumn>
                     <RightColumn>
                         {/*<StyledResponsiveVideoEmbed*/}

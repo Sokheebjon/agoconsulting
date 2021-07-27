@@ -97,9 +97,9 @@ export default ({
                                 </Statistic>
                             ))}
                         </Statistics>
-                        <PrimaryButton as="a" href={primaryButtonUrl}>
-                            {primaryButtonText}
-                        </PrimaryButton>
+                        {/*<PrimaryButton as="a" href={primaryButtonUrl}>*/}
+                        {/*    {primaryButtonText}*/}
+                        {/*</PrimaryButton>*/}
                     </TextContent>
                 </TextColumn>
             </TwoColumn>
